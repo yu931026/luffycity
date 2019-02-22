@@ -1,0 +1,92 @@
+
+course_dict = {
+	'1': {
+		'title': 'Python基础', 
+		'img': 'Python基础.jpg', 
+		'policy_id': '2', 
+		'coupon': {
+					3: {
+						'coupon_type': 2, 
+						'coupon_type_display': '折扣券', 
+						'off_percent': 90
+						},
+					4: {
+						'coupon_type': 2, 
+						'coupon_type_display': '折扣券', 
+						'off_percent': 90
+						}
+				}, 
+		'default_coupon': 0, 
+		'name': '2个月', 
+		'time': 60, 
+		'price': 1000.0
+		}, 
+	'2': {
+		'title': 'Python进阶', 
+		'img': 'Python进阶.jpg', 
+		'policy_id': '5', 
+		'coupon': {}, 
+		'default_coupon': 0, 
+		'name': '1个月', 
+		'time': 30, 
+		'price': 600.0
+		}
+}
+
+{
+'coupon': {
+	2: {'money_equivalent_value': 200},
+	},
+ 'default_coupon': 0
+ }
+
+
+######################## redis ########################
+
+redis -> {
+	payment_用户ID_课程ID :{
+		'course_id':1,
+		'title': 'Python基础', 
+		'img': 'Python基础.jpg', 
+		'policy_id': '2', 
+		'coupon': {
+					3: {
+						'coupon_type': 2, 
+						'coupon_type_display': '折扣券', 
+						'off_percent': 90
+						},
+					4: {
+						'coupon_type': 2, 
+						'coupon_type_display': '折扣券', 
+						'off_percent': 90
+						}
+				}, 
+		'default_coupon': 0, 
+		'name': '2个月', 
+		'time': 60, 
+		'price': 1000.0
+	},
+	payment_用户ID_课程ID :{
+		'course_id':1,
+		'title': 'Python基础', 
+		'img': 'Python基础.jpg', 
+		'policy_id': '2',   # 价格策略对应的ID
+		'coupon': {
+					折扣券ID: {
+						'coupon_type': 2, 
+						'coupon_type_display': '折扣券', 
+						'off_percent': 90
+						}
+				}, 
+		'default_coupon': 0, # 默认不选择折扣券
+		'name': '2个月',  # 价格策略对应的周期
+		'time': 60,   # 价格策略对应的时长
+		'price': 1000.0  # 价格策略对应的价格
+	},
+	payment_global_用户ID :{  # 用户可用的通用优惠券
+		'coupon': {
+			2: {'money_equivalent_value': 200},  # 优惠券 ID ：{优惠券信息}
+			},
+		'default_coupon': 0
+	}
+}
